@@ -1,8 +1,8 @@
 <?php
 
 $year = date('Y');
-$title = 'Вторая домашка)';
-$heading = 'Вторая домашняя работа от 10.02.' . $year . 'г.';
+$title = 'Третья домашка)';
+$heading = 'Третья домашняя работа от 13.02.' . $year . 'г.';
 
 ?>
 
@@ -14,333 +14,330 @@ $heading = 'Вторая домашняя работа от 10.02.' . $year . '�
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?= $title ?></title>
+    <link rel="stylesheet" type="text/css" href="style.css" >
 </head>
 <body>
-<h1><?= $heading ?></h1>
-<h3>1. Две целочисленные переменные и скрипт.</h3>
-<p><pre>
+<header id="header">
+    <div class="container">
+        <div class="logo">
+            <span class="logo-d">D</span>Z
+        </div>
+        <nav class="main-nav">
+            <?php
+            require_once '6-menu.php';
+            ?>
+        </nav>
+    </div>
+    <hr>
+</header>
+<div class="container">
+    <h1><?= $heading ?></h1>
+    <h3 id="1">1. Числа от 0 до 100.</h3>
+    <p>
+        <?php
+        require_once '1.php';
+        echo getNumRow();
+        ?>
+    </p>
+    <pre>
         <code>
             &lt;?php
-                $a = 5;
-                $b = 3;
-                if ($a >= 0 && $b >= 0) {
-                    echo $a - $b;
-                } else if ($a < 0 && $b < 0) {
-                    echo $a * $b;
-                } else if (($a < 0 && $b >= 0) || ($a >= 0 && $b < 0)) {
-                    echo $a + $b;
+                $i = $0;
+                $b = '';
+
+                while ($i <= 100) {
+                    if ($i % 3 === 0) {
+                        $b .= $i . ' ';
+                    }
+                    $i++;
                 }
+                echo $b;
             ?&gt;
         </code>
     </pre>
-</p>
-
-<?php
-
-// Рабочий php код
-
-$a = 5;
-$b = 3;
-if ($a >= 0 && $b >= 0) {
-    echo $a - $b;
-} else if ($a < 0 && $b < 0) {
-    echo $a * $b;
-} else if (($a < 0 && $b >= 0) || ($a >= 0 && $b < 0)) {
-    echo $a + $b;
-}
-
-?>
-
-<h3>2. Переменная $а и оператор switch.</h3>
-<p><pre>
+    <h3 id="2">2. Вывод от 0 до 10.</h3>
+    <p>
+        <?php
+        require_once '2.php';
+        ?>
+    </p>
+    <pre>
         <code>
             &lt;?php
-                $a = 5;
-                switch($a){
-                    case $a < 15:
-                        for($i = $a; $i <= 15; $i++){
-                            echo $i . '&lt;br&gt;';
+                $i = 0;
+                do{
+                    if ($i == 0){
+                        echo "&lt;p&gt;$i - это ноль.&lt;/p&gt;";
+                        } elseif (is_float($i / 2)){
+                        echo "&lt;p&gt;$i - нечетное число&lt;/p&gt;";
+                        } else {
+                        echo "&lt;p&gt;$i - четное число&lt;/p&gt;";
                         }
-                    break;
-                default:
-                    echo 'Введите число меньше 15';
-                    break;
-                }
+                        $i++;
+                    } while ($i <= 10);
             ?&gt;
         </code>
     </pre>
-</p>
-
-<?php
-
-// Рабочий php код
-
-$a = 5;
-switch($a){
-    case $a < 15:
-        for($i = $a; $i <= 15; $i++){
-            echo $i . '<br>';
-        }
-        break;
-    default:
-        echo 'Введите число меньше 15';
-        break;
-}
-
-?>
-
-<h3>3. Математические функции.</h3>
-<p><pre>
+    <h3 id="3">3. Области и города.</h3>
+    <p>
+        <?php
+        require_once '3.php';
+        ?>
+    </p>
+    <pre>
         <code>
             &lt;?php
-                function sum($a, $b)
-                {
-                    return $a + $b;
-                }
+                $regions = [
+                    'Московская' => [
+                        'Москва',
+                        'Зеленоград',
+                        'Клин'
+                    ],
+                    'Ленинградская' => [
+                        'Санкт-Петербург',
+                        'Всеволожск',
+                        'Павловск',
+                        'Кронштадт'
+                    ],
+                    'Рязанская' => [
+                        'Рязань',
+                        'Касимов',
+                        'Кораблино'
+                    ],
+                    'Калужская' => [
+                        'Калуга',
+                        'Обнинск',
+                        'Киров'
+                    ]
+                ];
 
-                function difference($a, $b)
-                {
-                    return $a - $b;
-                }
-
-                function product($a, $b)
-                {
-                    return $a * $b;
-                }
-
-                function quotient($a, $b)
-                {
-                    return $a / $b;
-                }
-            ?&gt;
-        </code>
-    </pre>
-</p>
-
-<?php
-
-// Рабочий php код
-
-$a = 5;
-function sum($a, $b)
-{
-    return $a + $b;
-}
-
-function difference($a, $b)
-{
-    return $a - $b;
-}
-
-function product($a, $b)
-{
-    return $a * $b;
-}
-
-function quotient($a, $b)
-{
-    return $a / $b;
-}
-
-?>
-
-
-<h3>4. Математическая функция и switch.</h3>
-<p><pre>
-        <code>
-            &lt;?php
-
-                function mathOperation($arg1, $arg2, $operation)
-                {
-                    switch($operation){
-                        case 'сложение':
-                            return function sum($arg1, $arg2);
-                        case 'вычитание':
-                            return function difference($arg1, $arg2);
-                        case 'умножение':
-                            return function product($arg1, $arg2);
-                        case 'деление':
-                            return function quotient($arg1, $arg2);
-                        default:
-                            return 'Введите верное значение математической операции';
+                foreach ($regions as $my_key => $my_value){
+                    echo $my_key . ' область:&lt;br&gt;';
+                    foreach ($my_value as $city){
+                        if($city == end($my_value)){
+                            echo $city . '.&lt;br&gt;';
+                        } else {
+                            echo $city . ', ';
+                        }
                     }
                 }
-
             ?&gt;
         </code>
     </pre>
-</p>
+    <h3 id="4">4. Транслит строки.</h3>
+    <p>
+        <?php
+        require_once '4.php';
+        ?>
+    </p>
+    <p>
 
-<?php
-
-// Рабочий php код
-
-function mathOperation($arg1, $arg2, $operation)
-{
-    switch($operation){
-        case 'сложение':
-            return sum($arg1, $arg2);
-        case 'вычитание':
-            return difference($arg1, $arg2);
-        case 'умножение':
-            return product($arg1, $arg2);
-        case 'деление':
-            return quotient($arg1, $arg2);
-        default:
-            return 'Введите верное значение математической операции';
-    }
-}
-
-?>
-
-<h3>5. Вывод года в подвале.</h3>
-<p><i><a href="#footer">Voilà :)</a></i></p>
-
-<h3>6. *Возведение в степень с помощью рекурсии.</h3>
-<p>
-<pre>
+    </p>
+    <pre>
         <code>
             &lt;?php
 
-                function power($val, $pow)
+                $arr = [
+                    'а' => 'a',
+                    'б' => 'b',
+                    'в' => 'v',
+                    'г' => 'g',
+                    'д' => 'd',
+                    'е' => 'e',
+                    'ё' => 'yo',
+                    'ж' => 'zh',
+                    'з' => 'z',
+                    'и' => 'i',
+                    'й' => 'y',
+                    'к' => 'k',
+                    'л' => 'l',
+                    'м' => 'm',
+                    'н' => 'n',
+                    'о' => 'o',
+                    'п' => 'p',
+                    'р' => 'r',
+                    'с' => 's',
+                    'т' => 't',
+                    'у' => 'u',
+                    'ф' => 'f',
+                    'х' => 'h',
+                    'ц' => 'c',
+                    'ч' => 'ch',
+                    'ш' => 'sh',
+                    'щ' => 'sh\'',
+                    'ъ' => '\'',
+                    'ы' => 'y',
+                    'ь' => '\'',
+                    'э' => 'e',
+                    'ю' => 'yu',
+                    'я' => 'ya'
+                ];
+
+                $str = 'Поиск 123 по ABC похожим abc запросам';
+
+                function getTranslite($str, $arr)
                 {
-                    if($pow !== 0) {
-                        return $val * power($val, $pow - 1);
+                    $arr1 = preg_split('//u', $str, null, PREG_SPLIT_NO_EMPTY);
+
+                    $newStr = '';
+
+                    for($i = 0; $i < count($arr1); $i++){
+                        $l = $arr1[$i];
+
+                        if (preg_match('/[А-Яа-яЁё]/', $l)) {
+                            if ($l === mb_strtoupper($l)) {
+                                $l = mb_strtolower($l);
+                                $newStr .= mb_strtoupper($arr[$l]);
+                            } else {
+                                $l = $arr1[$i];
+                                $newStr .= $arr[$l];
+                            }
+                        } elseif (preg_match('/[A-Za-z\s\d]/', $l)) {
+                            $l = $arr1[$i];
+                            $newStr .= $l;
+
+                        }
                     }
-                    return 1;
+
+                    return $newStr;
                 }
 
-            ?&gt;
+                echo getTranslite($str, $arr);
 
+            ?&gt;
         </code>
     </pre>
-</p>
-
-<?php
-
-// Рабочий php код
-
-    function power($val, $pow)
-    {
-        if($pow !== 0) {
-            return $val * power($val, $pow - 1);
-        }
-        return 1;
-    }
-?>
-
-<h3>7. *Функция вывода времени.</h3>
-<p>
-<pre>
+    <h3 id="5">5. Подчеркивание вместо пробелов.</h3>
+    <p>
+        <?php
+        require_once '5.php';
+        ?>
+    </p>
+    <pre>
         <code>
             &lt;?php
 
-                function getCurrentTime()
+                echo str_replace(' ', '_', getTranslite($str, $arr));
+
+            ?&gt;
+        </code>
+    </pre>
+    <h3 id="6">6. Вывести меню с помощью php.</h3>
+    <p>
+    <p><i><a href="#header">Voilà :)&#9757;</a></i></p>
+    <pre>
+        <code>
+            &lt;?php
+
+                $arr_menu = [
+                    'Задание1' => '#1',
+                    'Задание2' => '#2',
+                    'Задание3' => '#3',
+                    'Задание4' => '#4',
+                    'Задание5' => '#5',
+                    'Задание6' => '#6',
+                    'Задание*' => [
+                        'Задание7' => '#7',
+                        'Задание8' => '#8',
+                        'Задание9' => '#9',
+                    ],
+                ];
+
+                echo '&lt;ul class="main-menu"&gt;';
+                foreach ($arr_menu as $key => $value)
                 {
-
-                    $h = date('H');
-                    $m = date('i');
-
-                    function getCase($d)
+                    if (!is_array($value))
                     {
-                        if ((int)$d == 0 || ((int)$d >= 5 && (int)$d <= 20) || (((int)$d >=10) && ($d[1] == 0 || ($d[1] >= 5 && $d[1] <= 9)))){
-                            return 3;
-                        } elseif (((int)$d < 10 && $d >= 2 && $d <= 4) || ((int)$d > 10 && $d[1] >= 2 && $d[1] <= 4))
+                        echo '&lt;li&gt;&lt;a href="' . $value . '"&gt;' . $key . '&lt;/a&gt;&lt;/li&gt;';
+                    } else
+                    {
+                        echo '&lt;li&gt;' . $key . '&darr;&lt;ul&gt;';
+
+                        foreach ($value as $sub_key => $sub_value)
                         {
-                            return 2;
-                        } elseif ((int)$d == 1 || ((int)$d > 20 && $d[1] == 1))
-                        {
-                            return 1;
+                            echo '&lt;li&gt;&lt;a href="' . $sub_value . '"&gt;' . $sub_key . '&lt;/a&gt;&lt;/li&gt;';
                         }
+
+                        echo '&lt;/ul&gt;&lt;/li&gt;';
                     }
+                }
+                echo '&lt;/ul&gt;';
 
-                    function getHour($d)
-                    {
-                        if (getCase($d) == 1) {
-                            return $d . ' ' . 'час ';
-                        } elseif (getCase($d) == 2) {
-                            return $d . ' ' . 'часа ';
-                        } elseif (getCase($d) == 3) {
-                            return $d . ' ' . 'часов ';
-                        }
-                    }
+            ?&gt;
 
-                    function getMinute($d)
-                    {
-                        if (getCase($d) == 1) {
-                            return $d . ' ' . 'минута';
-                        } elseif (getCase($d) == 2) {
-                            return $d . ' ' . 'минуты';
-                        } elseif (getCase($d) == 3) {
-                            return $d . ' ' . 'минут';
-                        }
-                    }
+        </code>
+    </pre>
+    </p>
+    <h3 id="7">7. *For без тела.</h3>
+    <p>
+        <?php
+        require_once '7.php';
+        ?>
+    </p>
+    <pre>
+        <code>
+            &lt;?php
 
-                    return getHour($h) . getMinute($m);
-
+                for($i = 0; print $i . ' ', $i++ < 9;)
+                {
+                    // пусто)
                 }
 
             ?&gt;
 
         </code>
     </pre>
-</p>
+    <h3 id="8">8. *Области и города на "К".</h3>
+    <p>
+        <?php
+        require_once '8.php';
+        ?>
+    </p>
+    <pre>
+        <code>
+            &lt;?php
 
-<?php
+                foreach ($regions as $my_key => $my_value){
+                    echo $my_key . ' область:<br>';
+                    $cities = '';
+                    foreach ($my_value as $city) {
+                        if (mb_substr($city, 0, 1) === 'К')
+                        {
+                            $cities .= $city . ', ';
+                        }
+                    }
+                    echo substr_replace($cities,'.<br>',-2);
+                }
 
-// Рабочий php код
-function getCurrentTime()
-{
+            ?&gt;
 
-    $h = date('H');
-    $m = date('i');
+        </code>
+    </pre>
+    <h3 id="9">9. *Пробелы &rarr; нижнее подчеркивание.</h3>
+    <p>
+        <?php
+        require_once '9.php';
+        ?>
+    </p>
+    <pre>
+        <code>
+            &lt;?php
 
-    function getCase($d)
-    {
-        if ((int)$d == 0 || ((int)$d >= 5 && (int)$d <= 20) || (((int)$d >=10) && ($d[1] == 0 || ($d[1] >= 5 && $d[1] <= 9)))){
-            return 3;
-        } elseif (((int)$d < 10 && $d >= 2 && $d <= 4) || ((int)$d > 10 && $d[1] >= 2 && $d[1] <= 4))
-        {
-            return 2;
-        } elseif ((int)$d == 1 || ((int)$d > 20 && $d[1] == 1))
-        {
-            return 1;
-        }
-    }
+                function getUrlFromStr($str, $arr)
+                {
+                    return mb_strtolower(str_replace(' ', '_', getTranslite($str, $arr)));
+                }
 
-    function getHour($d)
-    {
-        if (getCase($d) == 1) {
-            return $d . ' ' . 'час ';
-        } elseif (getCase($d) == 2) {
-            return $d . ' ' . 'часа ';
-        } elseif (getCase($d) == 3) {
-            return $d . ' ' . 'часов ';
-        }
-    }
+            ?&gt;
 
-    function getMinute($d)
-    {
-        if (getCase($d) == 1) {
-            return $d . ' ' . 'минута';
-        } elseif (getCase($d) == 2) {
-            return $d . ' ' . 'минуты';
-        } elseif (getCase($d) == 3) {
-            return $d . ' ' . 'минут';
-        }
-    }
-
-    return getHour($h) . getMinute($m);
-
-}
-
-?>
-
-<h2 style="text-align: center;"><?= getCurrentTime() ?></h2>
-
+        </code>
+    </pre>
+</div>
 <footer id="footer">
     <hr>
-    <p style="text-align: center;">Slava &copy; <?= $year ?></p>
+    <div class="container">
+        <p style="text-align: center;">Slava &copy; <?= $year ?></p>
+    </div>
 </footer>
 </body>
 </html>
